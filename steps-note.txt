@@ -20,3 +20,5 @@
 10. Create a store flder in src and add redux files (AppState and configureStore)
 
 11. set up React Error Boudaries feature
+
+12. Create ErrorBoundary.tsx and ErrorBoundary.css files in components directory
