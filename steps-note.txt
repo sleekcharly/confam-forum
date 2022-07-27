@@ -1,0 +1,22 @@
+1. Start with creating the app with create-react-app using the typescript template.
+
+2. start the app  (npm start)
+
+3. Install redux and React Router 
+(npm i redux react-redux @types/redux @types/react-redux react-router-dom @types/react-router-dom)
+
+4. Replace the contents of App.css
+
+5. Create a folder in src called "components"
+
+6. create a container component for each elements in the root div of the app
+
+7. Add media queries for mobile devices in App.css.
+
+8. Create Hook which helps handle device size-based rendering
+
+9. Update index.tsx file to include redux and react router
+
+10. Create a store flder in src and add redux files (AppState and configureStore)
+
+11. set up React Error Boudaries feature
