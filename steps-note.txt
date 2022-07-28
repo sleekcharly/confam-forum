@@ -44,3 +44,5 @@
 22. Update SideBarMenus.tsx to include link for registration
 
 23. Create a helper service for password validation {create a new folder inside src called common and then another folder called validators, then create a file called PasswordValidator.ts and populate with source code}
+
+24. create a folder called auth in components dir and place authentication related files in there
