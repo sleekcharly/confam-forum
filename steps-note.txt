@@ -32,3 +32,5 @@
 16. Create a new folder inside store called user. Now create a file called Reducer.ts and add the required source code
 
 17. Install Font Awesome (npm i @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome)
+
+18. Create a sidebar folder in components directory and move the existing Sidebar.tsx file into it and create SideBarMenus.tsx file. 

@@ -7,7 +7,7 @@ export interface UserProfilePayload {
 
 export interface UserProfileAction {
   type: string;
-  payload: userProfilePayload | null;
+  payload: UserProfilePayload | null;
 }
 
 export const UserProfileReducer = (
