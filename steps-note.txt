@@ -39,3 +39,4 @@
 
 20. Update Nax.tsx file to resuse SideBarMenus component for mobile display
 
+21. Install react-modal to make some components modal popups
