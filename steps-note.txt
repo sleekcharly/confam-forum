@@ -28,3 +28,5 @@
 14. Create and populate the models folder to support the DataService.ts file
 
 15. Update the LeftMenu.tsx file to use the newly created DataService
+
+16. Create a new folder inside store called user. Now create a file called Reducer.ts and add the required source code
