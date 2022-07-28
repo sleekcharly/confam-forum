@@ -36,3 +36,6 @@
 18. Create a sidebar folder in components directory and move the existing Sidebar.tsx file into it and create SideBarMenus.tsx file. 
 
 19. Update SideBar.tsx file to use the SideBarMenus.tsx code.
+
+20. Update Nax.tsx file to resuse SideBarMenus component for mobile display
+
