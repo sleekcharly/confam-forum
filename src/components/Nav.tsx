@@ -27,9 +27,21 @@ const Nav = () => {
   const onClickToggle = (e: React.MouseEvent<Element, MouseEvent>) => {
     setShowMenu(!showMenu);
   };
+
+  const onRequestClose = (
+    e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
+  ) => {
+    setShowMenu(false);
+  };
+
   return (
     <React.Fragment>
-      <ReactModal className="modal-menu" isOpen={showMenu}>
+      <ReactModal
+        className="modal-menu"
+        isOpen={showMenu}
+        onRequestClose={onRequestClose}
+        shouldCloseOnOverlayClick={true}
+      >
         <SideBarMenus />
       </ReactModal>
       <nav className="navigation">
