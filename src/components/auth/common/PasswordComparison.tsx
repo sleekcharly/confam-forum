@@ -3,7 +3,7 @@ import { allowSubmit } from "./Helpers";
 import {
   isPasswordValid,
   PasswordTestResult,
-} from "../common/validators/PasswordValidator";
+} from "../../../common/validators/PasswordValidator";
 
 interface PasswordComparisonProps {
   dispatch: React.Dispatch<any>;

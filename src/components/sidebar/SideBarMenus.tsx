@@ -9,16 +9,28 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Registration from "../auth/Registration";
+import Login from "../auth/Login";
+import Logout from "../auth/Logout";
 import { UserProfileSetType } from "../../store/user/Reducer";
 import "./SidebarMenus.css";
 
 const SideBarMenus = () => {
   const [showRegister, setShowregister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
   const user = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
 
   const onClickToggleRegister = () => {
     setShowregister(!showRegister);
+  };
+
+  const onClickToggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
+
+  const onClickToggleLogout = () => {
+    setShowLogout(!showLogout);
   };
 
   useEffect(() => {
@@ -47,6 +59,20 @@ const SideBarMenus = () => {
             isOpen={showRegister}
             onClickToggle={onClickToggleRegister}
           />
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faSignInAlt} />
+          <span onClick={onClickToggleLogin} className="menu-name">
+            login
+          </span>
+          <Login isOpen={showLogin} onClickToggle={onClickToggleLogin} />
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faSignOutAlt} />
+          <span onClick={onClickToggleLogout} className="menu-name">
+            logout
+          </span>
+          <Logout isOpen={showLogout} onClickToggle={onClickToggleLogout} />
         </li>
       </ul>
     </React.Fragment>
