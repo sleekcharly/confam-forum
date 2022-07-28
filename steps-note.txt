@@ -26,3 +26,5 @@
 13. Implement data service layer. { Create a services folder inside src; create a DataService.ts file inside the services folder and populate from source code}
 
 14. Create and populate the models folder to support the DataService.ts file
+
+15. Update the LeftMenu.tsx file to use the newly created DataService
