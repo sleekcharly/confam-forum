@@ -1,24 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import ReactModal from "react-modal";
+import SideBarMenus from "./sidebar/SideBarMenus";
 
 const Nav = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const { width } = useWindowDimensions();
 
   const getMobileMenu = () => {
     if (width <= 768) {
       return (
-        <FontAwesomeIcon icon={faBars} size="lg" className="nav-mobile-menu" />
+        <FontAwesomeIcon
+          onClick={onClickToggle}
+          icon={faBars}
+          size="lg"
+          className="nav-mobile-menu"
+        />
       );
     }
 
     return null;
   };
+
+  const onClickToggle = (e: React.MouseEvent<Element, MouseEvent>) => {
+    setShowMenu(!showMenu);
+  };
   return (
-    <nav className="navigation">
-      {getMobileMenu()} <strong>ConfamForum</strong>
-    </nav>
+    <React.Fragment>
+      <ReactModal className="modal-menu" isOpen={showMenu}>
+        <SideBarMenus />
+      </ReactModal>
+      <nav className="navigation">
+        {getMobileMenu()} <strong>ConfamForum</strong>
+      </nav>
+    </React.Fragment>
   );
 };
 
