@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useWindowDimensions } from "../hooks/useWindowDimensions";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ReactModal from "react-modal";
 import SideBarMenus from "./sidebar/SideBarMenus";

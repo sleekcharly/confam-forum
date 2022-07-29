@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppState } from "../../store/AppState";
+import { AppState } from "../../../store/AppState";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,10 +8,10 @@ import {
   faSignInAlt,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import Registration from "../auth/Registration";
-import Login from "../auth/Login";
-import Logout from "../auth/Logout";
-import { UserProfileSetType } from "../../store/user/Reducer";
+import Registration from "../../auth/Registration";
+import Login from "../../auth/Login";
+import Logout from "../../auth/Logout";
+import { UserProfileSetType } from "../../../store/user/Reducer";
 import "./SidebarMenus.css";
 
 const SideBarMenus = () => {
