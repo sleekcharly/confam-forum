@@ -44,7 +44,7 @@ const Nav = () => {
       >
         <SideBarMenus />
       </ReactModal>
-      <nav className="navigation">
+      <nav>
         {getMobileMenu()} <strong>ConfamForum</strong>
       </nav>
     </React.Fragment>
