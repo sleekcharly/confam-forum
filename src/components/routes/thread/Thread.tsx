@@ -7,9 +7,9 @@ import ThreadTitle from "./ThreadTitle";
 import ThreadModel from "../../../models/Thread";
 import { getThreadById } from "../../../services/DataService";
 import Nav from "../../areas/Nav";
-// import ThreadBody from "./ThreadBody";
-// import ThreadResponsesBuilder from "./ThreadResponsesBuilder";
-// import ThreadPointsBar from "../../points/ThreadPointsBar";
+import ThreadBody from "./ThreadBody";
+import ThreadResponsesBuilder from "./ThreadResponsesBuilder";
+import ThreadPointsBar from "../../ThreadPointsBar";
 
 const Thread = () => {
   const [thread, setThread] = useState<ThreadModel | undefined>();
@@ -38,21 +38,23 @@ const Thread = () => {
           />
           <ThreadCategory categoryName={thread?.category?.name} />
           <ThreadTitle title={thread?.title} />
-          {/* <ThreadBody body={thread?.body} /> */}
+          <ThreadBody body={thread?.body} />
+          {/* <hr className="thread-section-divider" />
+          <ThreadResponsesBuilder threadItems={thread?.threadItems} /> */}
         </div>
-        {/* <div className="thread-content-points-container">
+        <div className="thread-content-points-container">
           <ThreadPointsBar
             points={thread?.points || 0}
             responseCount={
               thread && thread.threadItems && thread.threadItems.length
             }
           />
-        </div> */}
+        </div>
       </div>
-      {/* <div className="thread-content-response-container">
+      <div className="thread-content-response-container">
         <hr className="thread-section-divider" />
         <ThreadResponsesBuilder threadItems={thread?.threadItems} />
-      </div> */}
+      </div>
     </div>
   );
 };
