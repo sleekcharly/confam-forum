@@ -32,6 +32,8 @@ const SideBarMenus = () => {
     setShowLogout(!showLogout);
   };
 
+  console.log(user);
+
   return (
     <React.Fragment>
       <ul>

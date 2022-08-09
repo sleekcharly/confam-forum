@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "emotion": "^10.0.27",
+    "@apollo/client": "^3.6.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -21,6 +21,8 @@
     "@types/slate": "^0.47.7",
     "@types/slate-react": "^0.22.9",
     "date-fns": "^2.29.1",
+    "emotion": "^10.0.27",
+    "graphql": "^16.5.0",
     "is-hotkey": "^0.1.6",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
