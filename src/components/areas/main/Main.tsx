@@ -97,6 +97,8 @@ const Main = () => {
     null
   );
 
+  const history = useHistory();
+
   useEffect(() => {
     if (categoryId && Number(categoryId) > 0) {
       execGetThreadsByCat({
@@ -125,6 +127,9 @@ const Main = () => {
       });
       setCategory(threads[0].category);
       setThreadCards(cards);
+    } else {
+      setCategory(undefined);
+      setThreadCards(null);
     }
   }, [threadsByCatData]);
 
@@ -149,8 +154,15 @@ const Main = () => {
     }
   }, [threadsLatestData]);
 
+  const onClickPostThread = () => {
+    history.push("./thread");
+  };
+
   return (
     <main className="content">
+      <button className="action-btn" onClick={onClickPostThread}>
+        Post
+      </button>
       <MainHeader category={category} />
       <div>{threadCards}</div>
     </main>

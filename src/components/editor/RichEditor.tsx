@@ -17,6 +17,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./RichEditor.css";
 
+export const getTextFromNodes = (nodes: Node[]) => {
+  return nodes.map((n: Node) => Node.string(n)).join("\n");
+};
+
 const HOTKEYS: { [keyName: string]: string } = {
   "mod+b": "bold",
   "mod+i": "italic",
@@ -26,7 +30,7 @@ const HOTKEYS: { [keyName: string]: string } = {
 const initialValue = [
   {
     type: "paragraph",
-    children: [{ text: "Enter your post here." }],
+    children: [{ text: "" }],
   },
 ];
 const LIST_TYPES = ["numbered-list", "bulleted-list"];
@@ -34,9 +38,14 @@ const LIST_TYPES = ["numbered-list", "bulleted-list"];
 class RichEditorProps {
   existingBody?: string;
   readOnly?: boolean = false;
+  sendOutBody?: (body: Node[]) => void;
 }
 
-const RichEditor: FC<RichEditorProps> = ({ existingBody, readOnly }) => {
+const RichEditor: FC<RichEditorProps> = ({
+  existingBody,
+  readOnly,
+  sendOutBody,
+}) => {
   const [value, setValue] = useState<Node[]>(initialValue);
   const renderElement = useCallback((props: any) => <Element {...props} />, []);
   const renderLeaf = useCallback((props: any) => <Leaf {...props} />, []);
@@ -44,17 +53,14 @@ const RichEditor: FC<RichEditorProps> = ({ existingBody, readOnly }) => {
 
   useEffect(() => {
     if (existingBody) {
-      setValue([
-        {
-          type: "paragraph",
-          text: existingBody,
-        },
-      ]);
+      setValue(JSON.parse(existingBody));
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [existingBody]);
 
   const onChangeEditorValue = (val: Node[]) => {
     setValue(val);
+    sendOutBody && sendOutBody(val);
   };
 
   return (
@@ -73,7 +79,7 @@ const RichEditor: FC<RichEditorProps> = ({ existingBody, readOnly }) => {
         className="editor"
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder="Enter some rich text…"
+        placeholder="Enter your post here."
         spellCheck
         autoFocus
         onKeyDown={(event) => {
