@@ -8,9 +8,7 @@ interface ThreadCategoryProps {
 }
 
 const ThreadCategory: FC<ThreadCategoryProps> = ({ category }) => {
-  const sendOutSelectedCategory = (cat: Category) => {
-    console.log("selected category", cat);
-  };
+  const sendOutSelectedCategory = (cat: Category) => {};
   return (
     <div className="thread-category-container">
       <strong>{category?.name}</strong>
