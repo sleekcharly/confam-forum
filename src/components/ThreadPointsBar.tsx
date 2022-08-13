@@ -10,23 +10,14 @@ import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { gql, useMutation } from "@apollo/client";
 
 const UpdateThreadPoint = gql`
-  mutation UpdateThreadPoint(
-    $userId: ID!
-    $threadId: ID!
-    $increment: Boolean!
-  ) {
-    updateThreadPoint(
-      userId: $userId
-      threadId: $threadId
-      increment: $increment
-    )
+  mutation UpdateThreadPoint($threadId: ID!, $increment: Boolean!) {
+    updateThreadPoint(threadId: $threadId, increment: $increment)
   }
 `;
 
 export class ThreadPointsBarProps {
   points: number = 0;
   responseCount?: number;
-  userId?: string;
   threadId?: string;
   allowUpdatePoints?: boolean = false;
   refreshThread?: () => void;
@@ -35,7 +26,6 @@ export class ThreadPointsBarProps {
 const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
   points,
   responseCount,
-  userId,
   threadId,
   allowUpdatePoints,
   refreshThread,
@@ -50,7 +40,6 @@ const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
 
     await execUpdateThreadPoint({
       variables: {
-        userId,
         threadId,
         increment: true,
       },
@@ -65,7 +54,6 @@ const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
 
     await execUpdateThreadPoint({
       variables: {
-        userId,
         threadId,
         increment: false,
       },

@@ -29,7 +29,6 @@ const ThreadResponse: FC<ThreadResponseProps> = ({
         <span style={{ marginLeft: "1em" }}>
           <ThreadPointsInline
             points={points || 0}
-            userId={userId}
             threadItemId={threadItemId}
           />
         </span>

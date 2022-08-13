@@ -76,12 +76,7 @@ const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
             </span>
             <span>
               {width <= 768 ? (
-                <ThreadPointsInline
-                  points={thread?.points || 0}
-                  responseCount={
-                    thread && thread.threadItems && thread.threadItems.length
-                  }
-                />
+                <ThreadPointsInline points={thread?.points || 0} />
               ) : null}
               {getResponses(thread)}
             </span>
