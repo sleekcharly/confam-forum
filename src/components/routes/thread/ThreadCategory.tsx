@@ -5,10 +5,13 @@ import CategoryDropDown from "../../CategoryDropDown";
 
 interface ThreadCategoryProps {
   category?: Category;
+  sendOutSelectedCategory: (cat: Category) => void;
 }
 
-const ThreadCategory: FC<ThreadCategoryProps> = ({ category }) => {
-  const sendOutSelectedCategory = (cat: Category) => {};
+const ThreadCategory: FC<ThreadCategoryProps> = ({
+  category,
+  sendOutSelectedCategory,
+}) => {
   return (
     <div className="thread-category-container">
       <strong>{category?.name}</strong>
