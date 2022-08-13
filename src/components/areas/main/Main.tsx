@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainHeader from "./MainHeader";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import ThreadCard from "./ThreadCard";
 import Category from "../../../models/Category";
 import { gql, useLazyQuery } from "@apollo/client";
@@ -19,7 +19,7 @@ const GetThreadsByCategoryId = gql`
           title
           body
           views
-          ponts
+          points
           user {
             userName
           }
@@ -113,6 +113,7 @@ const Main = () => {
   /*In useEffect , threadsByCatData changes cause us to update category and
     threadCards with data from the getThreadsByCategoryId query.*/
   useEffect(() => {
+    console.log("main threadsByCatData", threadsByCatData);
     if (
       threadsByCatData &&
       threadsByCatData.getThreadsByCategoryId &&

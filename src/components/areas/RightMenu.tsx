@@ -24,6 +24,7 @@ const RightMenu = () => {
   >();
 
   useEffect(() => {
+    console.log(categoryThreadData);
     if (categoryThreadData && categoryThreadData.getTopCategoryThread) {
       const topCatThreads = groupBy(
         categoryThreadData.getTopcategoryThread,

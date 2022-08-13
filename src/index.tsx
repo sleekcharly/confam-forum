@@ -18,7 +18,10 @@ const client = new ApolloClient({
   uri: "http://localhost:8080/graphql",
   credentials: "include",
   // apollo caches all our query results
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    // disable results from being cached
+    resultCaching: false,
+  }),
 });
 
 root.render(

@@ -21,6 +21,7 @@ const GetThreadById = gql`
       ... on Thread {
         id
         user {
+          id
           userName
         }
         lastModifiedOn
@@ -36,6 +37,7 @@ const GetThreadById = gql`
           body
           points
           user {
+            id
             userName
           }
         }
@@ -45,14 +47,26 @@ const GetThreadById = gql`
 `;
 
 const Thread = () => {
-  const [execGetThreadById, { data: threadData }] = useLazyQuery(GetThreadById);
+  const [execGetThreadById, { data: threadData }] = useLazyQuery(
+    GetThreadById,
+    { fetchPolicy: "no-cache" }
+  );
   const [thread, setThread] = useState<ThreadModel | undefined>();
   const { id } = useParams<{ id: string }>();
   const [readOnly, setReadOnly] = useState(false);
 
+  const refreshThread = () => {
+    if (id && Number(id) > 0) {
+      execGetThreadById({
+        variables: {
+          id,
+        },
+      });
+    }
+  };
+
   useEffect(() => {
     if (id && Number(id) > 0) {
-      console.log("id", id);
       execGetThreadById({
         variables: {
           id,
@@ -62,7 +76,6 @@ const Thread = () => {
   }, [id, execGetThreadById]);
 
   useEffect(() => {
-    console.log("threadData", threadData);
     if (threadData && threadData.getThreadById) {
       setThread(threadData.getThreadById);
       setReadOnly(true);
@@ -94,6 +107,10 @@ const Thread = () => {
             responseCount={
               thread && thread.threadItems && thread.threadItems.length
             }
+            userId={thread?.user.id || "0"}
+            threadId={thread?.id || "0"}
+            allowUpdatePoints={true}
+            refreshThread={refreshThread}
           />
         </div>
       </div>
