@@ -98,7 +98,7 @@ const Thread = () => {
   const [readOnly, setReadOnly] = useState(false);
   const user = useSelector((state: AppState) => state.user);
 
-  const [{ userId, category, title, body, bodyNode }, threadReducerDispatch] =
+  const [{ userId, category, title, bodyNode }, threadReducerDispatch] =
     useReducer(threadReducer, {
       userId: user ? user.id : "0",
       category: undefined,
@@ -164,7 +164,7 @@ const Thread = () => {
     });
   };
 
-  const receiveBody = (body: Node[]) => {
+  const receiveBody = (body: Node[] | any) => {
     threadReducerDispatch({
       type: "bodyNode",
       payload: body,
