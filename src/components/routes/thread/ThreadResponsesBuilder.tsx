@@ -5,11 +5,13 @@ import ThreadResponse from "./ThreadResponse";
 interface ThreadResponsesBuilderProps {
   threadItems?: Array<ThreadItem>;
   readOnly: boolean;
+  refreshThread?: () => void;
 }
 
 const ThreadResponsesBuilder: FC<ThreadResponsesBuilderProps> = ({
   threadItems,
   readOnly,
+  refreshThread,
 }) => {
   const [responseElements, setResponseElements] = useState<
     JSX.Element | undefined
@@ -26,14 +28,16 @@ const ThreadResponsesBuilder: FC<ThreadResponsesBuilderProps> = ({
               lastModifiedOn={ti.createdOn}
               points={ti.points}
               readOnly={readOnly}
-              userId={ti?.user.id || "0"}
               threadItemId={ti?.id || "0"}
+              threadId={ti.thread.id}
+              refreshThread={refreshThread}
             />
           </li>
         );
       });
       setResponseElements(<ul>{thResponses}</ul>);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threadItems, readOnly]);
 
   return (

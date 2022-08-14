@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/routes/Home";
 import Thread from "./components/routes/thread/Thread";
 import { useDispatch } from "react-redux";
-import { UserProfileSetType } from "./store/user/Reducer";
 import UserProfile from "./components/routes/userProfile/UserProfile";
 import { gql, useQuery } from "@apollo/client";
 import { ThreadCategoriesType } from "./store/categories/Reducer";
