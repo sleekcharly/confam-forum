@@ -16,6 +16,7 @@ import { AppState } from "../../../store/AppState";
 import Category from "../../../models/Category";
 import { getTextFromNodes } from "../../editor/RichEditor";
 import ThreadPointsInline from "../../ThreadPointsInline";
+import ThreadResponse from "./ThreadResponse";
 
 const GetThreadById = gql`
   query GetThreadById($id: ID!) {
@@ -271,13 +272,35 @@ const Thread = () => {
           />
         </div>
       </div>
-      <div className="thread-content-response-container">
-        <hr className="thread-section-divider" />
-        <ThreadResponsesBuilder
-          threadItems={thread?.threadItems}
-          readOnly={readOnly}
-        />
-      </div>
+      {thread ? (
+        <div className="thread-content-response-container">
+          <hr className="thread-section-divider" />
+          <div style={{ marginBottom: ".5em" }}>
+            <strong>Post Response</strong>
+          </div>
+          <ThreadResponse
+            body={""}
+            userName={user?.userName}
+            lastModifiedOn={new Date()}
+            points={0}
+            readOnly={false}
+            threadItemId={"0"}
+            threadId={thread.id}
+            refreshThread={refreshThread}
+          />
+        </div>
+      ) : null}
+
+      {thread ? (
+        <div className="thread-content-response-container">
+          <hr className="thread-section-divider" />
+          <ThreadResponsesBuilder
+            threadItems={thread?.threadItems}
+            readOnly={readOnly}
+            refreshThread={refreshThread}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -23,8 +23,8 @@ const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
 
   const [{ userName, password, resultMsg, isSubmitDisabled }, dispatch] =
     useReducer(userReducer, {
-      userName: "tester",
-      password: "Test123!@#",
+      userName: "",
+      password: "",
       resultMsg: "",
       isSubmitDisabled: false,
     });
@@ -32,7 +32,7 @@ const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const { execMe, updateMe } = useRefreshReduxMe();
 
   const onChangeUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: "username", payload: e.target.value });
+    dispatch({ type: "userName", payload: e.target.value });
     if (!e.target.value)
       allowSubmit(dispatch, "Username cannot be empty", true);
     else allowSubmit(dispatch, "", false);

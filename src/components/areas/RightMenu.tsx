@@ -27,7 +27,7 @@ const RightMenu = () => {
     console.log(categoryThreadData);
     if (categoryThreadData && categoryThreadData.getTopCategoryThread) {
       const topCatThreads = groupBy(
-        categoryThreadData.getTopcategoryThread,
+        categoryThreadData.getTopCategoryThread,
         "categoryName"
       );
       const topElements = [];

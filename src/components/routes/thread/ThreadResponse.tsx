@@ -95,7 +95,7 @@ const ThreadResponse: FC<ThreadResponseProps> = ({
       </div>
       <div className="thread-body-editor">
         <RichEditor
-          existingBody={body}
+          existingBody={bodyToSave}
           readOnly={readOnly}
           sendOutBody={receiveBody}
         />
